@@ -1,0 +1,172 @@
+/*printed version of the site (task 1)*/
+@media print{
+    .tm-sidebar,
+    div#about,
+    section.tm-content-box,
+    section.blocks,
+    section#ideas {
+        display: none;
+    }
+
+    .tm-main-content {
+        width: 100%;
+        margin: 0;
+    }
+
+    .tm-content-box {
+        margin-bottom: 0;
+    }
+
+    .flex-2-col:first-child {
+        margin: 0 50px 20px 50px;
+        flex-wrap: wrap;
+    }
+
+    .tm-content-box .flex-item {
+        margin: 0 auto;
+    }
+
+    .tm-banner {
+        height: 250px;
+    }
+    
+    .tm-team-description-container {
+        padding: 0;
+        max-width: 100%;
+    }
+
+    h2.tm-section-title {
+        color: blue;
+    }
+}
+
+@media screen {
+    /*Task 2*/
+    div#about img {
+        border-radius: 50%;
+    }
+
+    div#about li.box-bg:hover {
+        background-color: #31b0d5;
+        
+    }
+
+    div#about h2.tm-section-title:hover {
+        color:white;
+        font-weight: bold;
+    }
+
+    /*Task 3*/
+
+    p::first-letter {
+        color: #79cdd7;
+    }
+
+    /*Task 4*/
+    div.tm-sidebar,
+    div#home,
+    div#home + section > div,
+    section.heading.tm-content-box,
+    section.blocks > div:last-child,
+    section#ideas,
+    section.tm-content-box {
+        box-shadow: 0 0 10px #2a2c30;
+    }
+
+    /*Task 5*/
+    .tm-content-box {
+        position: relative;
+    }
+    .tm-content-box:not(:nth-child(2))::before {    
+        content: ""; 
+        position: absolute;
+        left: 0;
+        top:0;    
+        border-style: solid;
+        border-width: 25px 115px 0 0;
+        border-color: #31b0d5 transparent transparent transparent;
+    }
+
+    /*Task 6*/
+    .carousel-inner h2.tm-section-title {
+        color: gainsboro;
+        letter-spacing: 5px;
+    }
+
+    /*Task 7*/
+
+    h2 + p {
+        font-style: italic;
+    }
+
+    /*Task 8*/ 
+    p:not(.tm-banner-text) {
+        text-indent: 1em;
+        line-height: 1.8em;    
+    }
+
+    p::first-letter {
+        font-size: 1.5em;
+    }
+
+    /*Task 9*/
+    .heading.tm-content-box a:visited {
+        color: silver;
+    }
+
+    .heading.tm-content-box a:hover {
+        text-decoration: underline double;
+        color: #31b0d5;
+    }
+
+    .heading .text::after {
+        content: "New";
+        color: red;
+        vertical-align: top;
+        font-size: 0.6em; 
+    }
+    .heading h2 {
+        color: #31b0d5;
+        text-align: center;
+    }
+
+    /*Task 10*/
+    .blocks .tm-content-box li.box p {
+        text-indent: 0;
+    }
+
+    .blocks p::first-letter {
+        color: black;
+        font-size: 1.5em;
+    }
+
+    .blocks li:nth-child(2n+1) {
+        background-color: #f2f2f2;
+    }
+
+    /*Task 11*/
+    .tm-sidebar li:not(:last-child) {
+        border-bottom: 1px dotted #afafaf;
+    }
+
+    /*Task 12*/
+    .pad .contact-form input,
+    .pad .contact-form button {
+        color: red;
+    }
+
+    .mandatory-field::after {
+        content: "*";
+        position: absolute;
+        right: 5px;
+        top: 0px;
+        color: red;
+        font-weight: bold;
+    }
+
+    .contact-form .submit-btn:hover {
+        background-color: #31b0d5;
+        color: white;
+        border-color: #31b0d5;
+    }
+}
