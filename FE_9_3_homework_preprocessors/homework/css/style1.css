@@ -16,7 +16,7 @@ body {
       margin-bottom: 30px; }
       body .main-wrapper header .logo {
         width: 380px;
-        height: auto;
+        height: inherit;
         float: left; }
         body .main-wrapper header .logo img {
           width: inherit;
@@ -31,7 +31,7 @@ body {
         border-top: 1px solid black;
         border-bottom: 1px solid black;
         border-color: #617d8a;
-        margin-top: 150px; }
+        margin-top: 140px; }
         body .main-wrapper header nav a {
           color: #1fbcd3;
           padding: 20px 0;

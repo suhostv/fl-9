@@ -20,7 +20,7 @@ body {
 
             .logo {
                 width: 380px;
-                height: auto;
+                height: inherit;
                 float: left;
                 
                 img {
@@ -39,7 +39,7 @@ body {
                 border-top: 1px solid black;
                 border-bottom: 1px solid black;
                 border-color: $navInputBorderCOlor;
-                margin-top: 150px;
+                margin-top: 140px;
 
                 a {
                     color: $navSearchHeaderTextColor;
