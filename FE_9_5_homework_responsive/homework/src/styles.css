@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,500i,700,700i');
 /*
  * Feel free to change name of colors if you need it
  * Feel free to add new colors if you need it
@@ -22,4 +23,231 @@
   --thumbnail-title: #484747;
 }
 
-/* Your styles go here */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: auto;
+  font-family: 'Roboto';
+  background-color: var(--bg-color--light);
+}
+
+.main-wrapper {
+  width: inherit;
+}
+
+header {
+  width: inherit;
+  margin-bottom: 200px;
+}
+
+nav {
+  width: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+nav a {
+  text-decoration: none;
+  border-bottom: 2px solid var(--navigation-border-bottom);
+  padding: 15px ;
+  font-size: 1.5em;
+  color: var(--link--active);
+}
+
+nav a.active {  
+  color: var(--link--active);
+}
+
+nav a:first-child {
+  font-weight: bold;
+}
+
+main {
+  width: inherit;  
+  margin-bottom: 150px;
+}
+
+main h1 {
+  font-size: 2.9em;
+  text-align: center;
+  margin-bottom: 170px;
+  font-weight: 700;
+}
+
+main h1 span {
+  font-weight: inherit;
+  font-style: italic;
+}
+
+.articles-wrapper {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.articles-wrapper article {
+  display: flex;
+  flex-direction: column;
+  margin: 40px auto;
+}
+
+.article-text {
+  width: inherit;
+  padding-top: 30px;
+  margin: 0 20px;
+}
+
+.article-text h3 {
+  color: var(--thumbnail-title);
+  font-size: 2em;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.article-text p {
+  color: var(--thumbnail--description);
+  font-size: 1em;
+  text-indent: 1.5em;
+  text-align: justify;
+}
+
+.article-img {
+  width: 100%;
+  height: auto;
+  margin: 0 20px;
+}
+
+.article-img img {
+  width: 100%;
+  height: auto;
+}
+
+.up-button {
+  height: 70px;
+  width: 70px;
+  bottom: 40px;
+  right: 40px;
+  position: fixed;
+  border-radius: 50%;
+  background-color: var(--btn-bg-color);
+  display: flex;
+  justify-content: center;
+  box-shadow: 8px 10px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.up-button a {
+  text-decoration: none;
+  align-self: center;
+  color: var(--btn-color);
+  font-size: 1.2em;
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+  text-align: center;
+  padding: 38px 0;
+}
+
+@media only screen and (min-width: 576px) {
+  body {
+    background-color: var(--bg-color--dark);
+  }
+
+  nav {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  nav a {
+    border-bottom: none;
+    font-size: 1em;
+    padding: 30px 20px;
+    color: var(--link);
+  }
+
+  nav a:focus { 
+    color: var(--link--active);
+    outline: 0;
+  }
+
+  nav a:first-child {
+    font-weight: normal;
+  }
+
+  main h1 {
+    color: var(--article-title);
+  }
+
+  .articles-wrapper {
+    width: 460px;
+    margin: auto;
+  }
+
+  .article-text h3 {
+    color: var(--article-title);    
+    background: linear-gradient(to right, #eee, #333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .up-button {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  nav {
+    justify-content: flex-end;
+  }
+
+  nav a:hover {     
+    color: var(--link--active);
+  }
+
+  nav a:focus {     
+    outline: 0;
+    color: var(--link);
+  }
+
+  main h1 {
+    font-size: 4.2em;
+    max-width: 95%;
+    margin: 0 auto;
+  }
+
+  .articles-wrapper {
+    max-width: 1100px;
+    width: inherit;
+  }
+
+  .articles-wrapper article {
+    flex-direction: row;
+    padding: 0 40px;
+    height: auto;
+  }
+
+  .articles-wrapper article:nth-child(2n) .article-img {
+    order: -1;
+  }
+
+  .article-text {
+    max-width: 510px;
+    margin: 0 auto;
+  }
+
+  .article-img {
+    width: 510px;
+    display: flex;
+  }
+
+  .article-img img {
+    align-self: center;
+  }
+}  
+
+
+
+
