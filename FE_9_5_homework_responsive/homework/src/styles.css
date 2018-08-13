@@ -42,7 +42,7 @@ body {
 
 header {
   width: inherit;
-  margin-bottom: 200px;
+  margin-bottom: 150px;
 }
 
 nav {
@@ -54,8 +54,8 @@ nav {
 nav a {
   text-decoration: none;
   border-bottom: 2px solid var(--navigation-border-bottom);
-  padding: 15px ;
-  font-size: 1.5em;
+  padding: 8px ;
+  font-size: 1.3em;
   color: var(--link--active);
 }
 
@@ -72,8 +72,8 @@ main {
   margin-bottom: 150px;
 }
 
-main h1 {
-  font-size: 2.9em;
+main h1 {  
+  font-size: 3.41em;
   text-align: center;
   margin-bottom: 170px;
   font-weight: 700;
@@ -85,7 +85,7 @@ main h1 span {
 }
 
 .articles-wrapper {
-  width: 80%;
+  width: 85%;
   margin: 0 auto;
 }
 
@@ -98,7 +98,6 @@ main h1 span {
 .article-text {
   width: inherit;
   padding-top: 30px;
-  margin: 0 20px;
 }
 
 .article-text h3 {
@@ -179,10 +178,11 @@ main h1 span {
 
   main h1 {
     color: var(--article-title);
+    font-size: 3.41em;
   }
 
   .articles-wrapper {
-    width: 460px;
+    width: 489px;
     margin: auto;
   }
 
@@ -213,9 +213,9 @@ main h1 span {
   }
 
   main h1 {
-    font-size: 4.2em;
-    max-width: 95%;
-    margin: 0 auto;
+    font-size: 5.5vw;
+    width: 95%;
+    margin: 0 auto 170px;
   }
 
   .articles-wrapper {
@@ -244,6 +244,8 @@ main h1 span {
   }
 
   .article-img img {
+    width: 500px;
+    height: auto;
     align-self: center;
   }
 }  
