@@ -3,7 +3,7 @@
  * Feel free to change name of colors if you need it
  * Feel free to add new colors if you need it
  */
-:root {
+/* :root {
   --bg-color--dark: #0a1223;
   --bg-color--light: #fff;
   --link: #5d5d5d;
@@ -11,17 +11,17 @@
   --link--hover: #54597d;
   --article-title: #ddd;
   --article-title--dark: #000;
-  --thumbnail--description: #5d5d5d;
+  --thumbnail--description: #5d5d5d; */
 
   /* These styles are needed only for media query max-width: 575px */
 
   /* The 'Up' button (circle button at right bottom corner) */
-  --btn-color: #fff;
+  /*--btn-color: #fff;
   --btn-bg-color: #5ebcff;
 
   --navigation-border-bottom: #ddd;
   --thumbnail-title: #484747;
-}
+} */
 
 * {
   margin: 0;
@@ -33,7 +33,7 @@ body {
   width: 100%;
   height: auto;
   font-family: 'Roboto';
-  background-color: var(--bg-color--light);
+  background-color: #fff;
 }
 
 .main-wrapper {
@@ -53,14 +53,14 @@ nav {
 
 nav a {
   text-decoration: none;
-  border-bottom: 2px solid var(--navigation-border-bottom);
+  border-bottom: 2px solid #ddd;
   padding: 8px ;
   font-size: 1.3em;
-  color: var(--link--active);
+  color: #54597d;
 }
 
 nav a.active {  
-  color: var(--link--active);
+  color: #54597d;
 }
 
 nav a:first-child {
@@ -74,9 +74,10 @@ main {
 
 main h1 {  
   font-size: 3.41em;
-  text-align: center;
-  margin-bottom: 170px;
+  text-align: center;  
+  margin: 0 auto 170px;
   font-weight: 700;
+  width: 95%;
 }
 
 main h1 span {
@@ -101,14 +102,14 @@ main h1 span {
 }
 
 .article-text h3 {
-  color: var(--thumbnail-title);
+  color: #484747;
   font-size: 2em;
   margin-bottom: 30px;
   font-weight: 700;
 }
 
 .article-text p {
-  color: var(--thumbnail--description);
+  color: #5d5d5d;
   font-size: 1em;
   text-indent: 1.5em;
   text-align: justify;
@@ -117,7 +118,7 @@ main h1 span {
 .article-img {
   width: 100%;
   height: auto;
-  margin: 0 20px;
+  margin: 50px 20px 0;
 }
 
 .article-img img {
@@ -132,7 +133,7 @@ main h1 span {
   right: 40px;
   position: fixed;
   border-radius: 50%;
-  background-color: var(--btn-bg-color);
+  background-color: #5ebcff;
   display: flex;
   justify-content: center;
   box-shadow: 8px 10px 10px 0 rgba(0, 0, 0, 0.2);
@@ -141,7 +142,7 @@ main h1 span {
 .up-button a {
   text-decoration: none;
   align-self: center;
-  color: var(--btn-color);
+  color: #fff;
   font-size: 1.2em;
   display: inline-block;
   height: 100px;
@@ -152,7 +153,7 @@ main h1 span {
 
 @media only screen and (min-width: 576px) {
   body {
-    background-color: var(--bg-color--dark);
+    background-color: #0a1223;
   }
 
   nav {
@@ -164,11 +165,11 @@ main h1 span {
     border-bottom: none;
     font-size: 1em;
     padding: 30px 20px;
-    color: var(--link);
+    color: #5d5d5d;
   }
 
   nav a:focus { 
-    color: var(--link--active);
+    color: #54597d;
     outline: 0;
   }
 
@@ -177,8 +178,9 @@ main h1 span {
   }
 
   main h1 {
-    color: var(--article-title);
+    color: #ddd;
     font-size: 3.41em;
+    margin: 0 auto 170px;
   }
 
   .articles-wrapper {
@@ -187,7 +189,7 @@ main h1 span {
   }
 
   .article-text h3 {
-    color: var(--article-title);    
+    color: #ddd;    
     background: linear-gradient(to right, #eee, #333);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -204,18 +206,16 @@ main h1 span {
   }
 
   nav a:hover {     
-    color: var(--link--active);
+    color: #54597d;
   }
 
   nav a:focus {     
     outline: 0;
-    color: var(--link);
+    color: #5d5d5d;
   }
 
   main h1 {
     font-size: 5.5vw;
-    width: 95%;
-    margin: 0 auto 170px;
   }
 
   .articles-wrapper {
@@ -241,6 +241,7 @@ main h1 span {
   .article-img {
     width: 510px;
     display: flex;
+    margin: 0 20px;
   }
 
   .article-img img {
