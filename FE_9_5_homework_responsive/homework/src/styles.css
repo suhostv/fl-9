@@ -145,10 +145,10 @@ main h1 span {
   color: #fff;
   font-size: 1.2em;
   display: inline-block;
-  height: 100px;
-  width: 100px;
+  height: inherit;
+  width: inherit;
   text-align: center;
-  padding: 38px 0;
+  padding: 22px;
 }
 
 @media only screen and (min-width: 576px) {
