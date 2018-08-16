@@ -1,7 +1,7 @@
 let amount = +prompt('Please, input amount of money');
 let discount = +prompt('Please, input your discount');
 
-if (amount <= 0 || discount <= 0 || discount > 100 || isNaN(amount) || isNaN(discount)) {
+if (amount <= 0 || discount < 0 || discount > 100 || isNaN(amount) || isNaN(discount)) {
     console.log('Invalid data');
 } else {
     let saved = amount / 100 * discount;
