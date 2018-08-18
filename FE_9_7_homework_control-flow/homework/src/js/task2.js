@@ -37,16 +37,14 @@
                     'Attempts left: ' + (3-i) + '\n' +
                     'Total prize: ' + totalPrize + '$\n' +
                     'Possible prize on current attempt: ' + Math.floor(currentPrize) +'$' 
-                    ,'');
+                    ,'');                 
                     
-                    
-
                     if (userNumber === null) {
                         onCancel();
                         break;
+                    } else {                   
+                        userNumber = +userNumber;
                     }
-                   
-                    userNumber = +userNumber;
                     
                     if (myNumber === userNumber) {
                         totalPrize += Math.floor(currentPrize);
@@ -57,14 +55,13 @@
                             endOfGameConfirmation(game, totalPrize);
                             break;
                         } else {
-                            currentRange *= 2;
-                           
+                            currentRange *= 2;                           
                             prize *= 3; 
                             currentPrize = prize;
                             round();
                             break;
                         }
-                    } else if (i === 3) {
+                    } else if (i === 2) {
                         endOfGameConfirmation(game, totalPrize);
                         break;
                     } else {
