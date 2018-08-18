@@ -3,7 +3,6 @@
     let gameInfo = {
         rangeStart : 0,
         rangeEnd : 5,
-        rangeMultiplier : 6
     }
 
     function onCancel() {
@@ -29,7 +28,6 @@
         } else {                    
             (function round() {
             let myNumber = generateNumber(currentRange);
-            console.log(myNumber);
             
                 for (let i = 0, currentPrize = prize; i < 3; i++) {
                     let userNumber = prompt('Enter a number from ' + gameInfo.rangeStart + 
