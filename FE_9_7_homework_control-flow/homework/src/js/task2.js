@@ -1,72 +1,72 @@
-(function guessingGame() {
+(function () {
     let start = confirm('Do you want to play a game?');
     let gameInfo = {
         rangeStart : 0,
         rangeEnd : 5,
+        prize : 10,
+        prizeMultiplier : 3,
+        rangeMultiplier : 2
     }
+    let wannaPlay = true;
 
-    function onCancel() {
-        alert('You did not become a millionaire, but can.');
-    }
-
-    function endOfGameConfirmation(callback, prizeWin) {
-        alert('Thank you for your game. Your prize is: ' + prizeWin);
-        confirm('Want to play again?') ? callback() : alert('See you next time');
-    }
-
-    function generateNumber (maxRange) {
-        return Math.floor(Math.random() * ++maxRange);
-    }
-    
-    (function game () {
-        let prize = 10; 
-        let totalPrize = 0;
-        let currentRange = gameInfo.rangeEnd;
+    if (start) {    
         
-        if (start === false) {
-            onCancel();
-        } else {                    
-            (function round() {
-            let myNumber = generateNumber(currentRange);
-            
+        while (wannaPlay) {
+            let wannaContinue = true;    
+            let prize = gameInfo.prize;
+            let range = gameInfo.rangeEnd; 
+            let totalPrize = 0;
+
+            while (wannaContinue) {
+                let myNumber = generateNumber(range);
+                console.log(myNumber);
+                
                 for (let i = 0, currentPrize = prize; i < 3; i++) {
-                    let userNumber = prompt('Enter a number from ' + gameInfo.rangeStart + 
-                    ' to ' + currentRange + '\n' +
+                    let userNumber = +prompt('Enter a number from ' + gameInfo.rangeStart + 
+                    ' to ' + range + '\n' +
                     'Attempts left: ' + (3-i) + '\n' +
                     'Total prize: ' + totalPrize + '$\n' +
                     'Possible prize on current attempt: ' + Math.floor(currentPrize) +'$' 
-                    ,'');                 
-                    
-                    if (userNumber === null) {
-                        onCancel();
-                        break;
-                    } else {                   
-                        userNumber = +userNumber;
-                    }
+                    ,''); 
                     
                     if (myNumber === userNumber) {
                         totalPrize += Math.floor(currentPrize);
-                        let playAgain = confirm('Congratulations! Your prize is: ' + 
-                        totalPrize + '$\nDo you want to contunue?');
                         
-                        if (!playAgain) {
-                            endOfGameConfirmation(game, totalPrize);
+                        let win = confirm('Congratulations! Your prize is: ' + 
+                            totalPrize + '$\nDo you want to continue?')
+                        if (!win) {
+                            endOfGameConfirmation(totalPrize);
+                            wannaContinue = false;
                             break;
                         } else {
-                            currentRange *= 2;                           
-                            prize *= 3; 
+                            range *= gameInfo.rangeMultiplier;                           
+                            prize *= gameInfo.prizeMultiplier; 
                             currentPrize = prize;
-                            round();
                             break;
                         }
                     } else if (i === 2) {
-                        endOfGameConfirmation(game, totalPrize);
+                        endOfGameConfirmation(totalPrize);
+                        wannaContinue = false;
                         break;
                     } else {
                         currentPrize /= 2;
                     }
                 }
-            }());    
+            }
         }
-    }());    
+    } else {
+        alert('You did not become a millionaire, but can.');
+    }
+
+    function endOfGameConfirmation(prizeWin) {
+        alert('Thank you for your game. Your prize is: ' + prizeWin);
+        if (!confirm('Want to play again?')) {
+            wannaPlay = false;
+            return wannaPlay; 
+        }
+    }
+
+    function generateNumber (maxRange) {
+        return Math.floor(Math.random() * ++maxRange);
+    }
 }());
