@@ -8,18 +8,18 @@
         rangeMultiplier : 2
     }
     let wannaPlay = true;
+    let wannaContinue;
 
     if (start) {    
         
         while (wannaPlay) {
-            let wannaContinue = true;    
+            wannaContinue = true;    
             let prize = gameInfo.prize;
             let range = gameInfo.rangeEnd; 
             let totalPrize = 0;
 
             while (wannaContinue) {
                 let myNumber = generateNumber(range);
-                console.log(myNumber);
                 
                 for (let i = 0, currentPrize = prize; i < 3; i++) {
                     let userNumber = +prompt('Enter a number from ' + gameInfo.rangeStart + 
@@ -32,11 +32,10 @@
                     if (myNumber === userNumber) {
                         totalPrize += Math.floor(currentPrize);
                         
-                        let win = confirm('Congratulations! Your prize is: ' + 
+                        let playAgain = confirm('Congratulations! Your prize is: ' + 
                             totalPrize + '$\nDo you want to continue?')
-                        if (!win) {
+                        if (!playAgain) {
                             endOfGameConfirmation(totalPrize);
-                            wannaContinue = false;
                             break;
                         } else {
                             range *= gameInfo.rangeMultiplier;                           
@@ -46,7 +45,6 @@
                         }
                     } else if (i === 2) {
                         endOfGameConfirmation(totalPrize);
-                        wannaContinue = false;
                         break;
                     } else {
                         currentPrize /= 2;
@@ -59,6 +57,7 @@
     }
 
     function endOfGameConfirmation(prizeWin) {
+        wannaContinue = false;
         alert('Thank you for your game. Your prize is: ' + prizeWin);
         if (!confirm('Want to play again?')) {
             wannaPlay = false;
