@@ -27,7 +27,7 @@
                 let myNumber = generateNumber(range);
                 
                 for (let i = 0, currentPrize = prize; i < 3; i++) {
-                    let userNumber = +prompt(inputTemplate(gameInfo.rangeStart, range, (3-i), totalPrize, currentPrize)
+                    let userNumber = +prompt(inputTemplate(gameInfo.rangeStart, range, 3-i, totalPrize, currentPrize)
                     , ''); 
                     
                     if (myNumber === userNumber) {
