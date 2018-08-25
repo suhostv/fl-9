@@ -9,7 +9,8 @@ const getClosestToZero = (...numbers) => {
             }
         }        
     }
-    return closest;
+    let output = closest !== Infinity ? closest : 'No numbers to check';
+    return output;
 }
 
 //getClosestToZero(9, 5, -4, -9); // => -4

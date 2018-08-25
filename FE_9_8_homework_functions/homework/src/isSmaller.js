@@ -1,5 +1,5 @@
-const isSmaller = (isBiggerFunc, a, b) => {
-    return !isBiggerFunc(a, b);
+const isSmaller = (firstNumber, secondNumber) => {
+    return !isBigger(firstNumber, secondNumber);
 }
 
-//isSmaller(isBigger, 5, -1); // => false
+//isSmaller(5, -1); // => false

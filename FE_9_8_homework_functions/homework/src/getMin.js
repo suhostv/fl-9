@@ -9,7 +9,8 @@ const getMin = (...numbers) => {
             }
         }
     }
-    return temp;
+    let output = temp !== Infinity ? temp : 'No numbers to check';
+    return output;
 }
 
 //getMin(3, 0, -3); // => -3
