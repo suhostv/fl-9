@@ -10,7 +10,7 @@ let forEach = (array, callBackFunction) => {
 
 let map = (array, callBackFunction) => {
     let transformedArr = [];
-    forEach(array, (elem) => transformedArr.push(callBackFunction(elem))); 
+    forEach(array, (elem) => transformedArr.push(callBackFunction(elem)));
     return transformedArr;
 }
 
@@ -52,9 +52,8 @@ let values = (data) => {
     return valuesArr;
 }
 
-let showFormattedDate = date => {
+let showFormattedDate = (date) => {
     let monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-  ];
+                      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     return `It is ${date.getDate()} of ${monthNames[date.getMonth()]}, ${date.getFullYear()}`
 }
