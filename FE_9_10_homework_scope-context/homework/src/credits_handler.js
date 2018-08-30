@@ -84,5 +84,45 @@ class UserAccount {
     getCardByKey(index) {
         return this.userCards[index - 1];
     }
-
 }
+// let user = new UserAccount('Bob');
+// user.addCard()
+// user.addCard()
+// user.addCard()
+
+// console.log(user.userCards);
+
+// let card1 = user.getCardByKey(1);
+// let card2 = user.getCardByKey(2);
+
+
+// card1.putCredits(500);
+// card1.setTransactionLimit(800);
+// card1.transferCredits(300, card2);
+
+// card2.takeCredits(50);
+
+// console.log(card1.getCardOptions()); 
+// console.log(card2.getCardOptions()); 
+
+// let user2 = new UserAccount('vitaliy');
+// user2.addCard();
+// user2.addCard();
+// user2.addCard();
+// user2.addCard();
+
+// console.log(user2.userCards);
+
+// let card11 = user2.getCardByKey(1);
+// let card22 = user2.getCardByKey(2);
+
+
+// card11.putCredits(10000);
+// card11.setTransactionLimit(30000);
+// card11.transferCredits(5000, card22);
+
+// card22.takeCredits(50);
+
+// console.log(card11.getCardOptions()); 
+// console.log(card22.getCardOptions()); 
+
