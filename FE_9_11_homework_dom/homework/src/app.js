@@ -41,6 +41,7 @@ rootNode.appendChild(img);
 
 let warning = createElemAddAttribute('h3', {class: 'warning'}, 'Maximum item per list are created');
 
+//event listeners
 addActionButton.addEventListener('click', appendAction);
 
 appendActionsDiv.addEventListener('click', function (event) {
@@ -100,6 +101,7 @@ function appendAction () {
     }   
 }
 
+//functions for dragndrop
 function handleDragStart(e) {
     draggingElement = this;    
     e.dataTransfer.effectAllowed = 'move';
