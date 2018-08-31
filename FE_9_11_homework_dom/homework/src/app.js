@@ -1,97 +1,47 @@
+let draggingElement = null; //variable needed for drag’n’drop
+
+//creation of page layout
 let rootNode = document.getElementById('root');
 
-//add heading
-let heading = document.createElement('h1');
-heading.innerHTML = 'TODO Cat List';
-rootNode.appendChild(heading);
+function createElemAddAttribute(tag, attributesObject, markup) {
+    let createdElement = document.createElement(tag);
+    if (Object.keys(attributesObject).length){
+        for (let key in attributesObject) {
+            if (attributesObject.hasOwnProperty(key)) {
+                createdElement.setAttribute(key, attributesObject[key]);
+            }
+        }
+    }
+    if (markup && typeof markup === 'string') {
+        createdElement.innerHTML = markup
+    }
+    return createdElement;
+}
 
-//add div with input
-let inputDiv = document.createElement('div');
-inputDiv.setAttribute('class', 'flex');
+let heading = createElemAddAttribute('h1', {}, 'TODO Cat List');
+ rootNode.appendChild(heading);
 
-let inputField = inputDiv.appendChild(document.createElement('input'));
-inputField.setAttribute('placeholder', 'Add New Action');
-inputField.setAttribute('type', 'text');
+let inputDiv = createElemAddAttribute('div', {class: 'flex'});
 
-let addActionButton = document.createElement('i');
-addActionButton.setAttribute('class', 'material-icons add');
-addActionButton.innerHTML = 'add_box';
+let inputField = createElemAddAttribute('input', {placeholder: 'Add New Action', type: 'text'});
+inputDiv.appendChild(inputField);
+
+let addActionButton = createElemAddAttribute('i', {class: 'material-icons add'}, 'add_box');
 inputDiv.appendChild(addActionButton);
 
 rootNode.appendChild(inputDiv);
 
-//add hr
 rootNode.appendChild(document.createElement('hr'));
 
-//add div to append actions to
-let appendActionsDiv = document.createElement('div'); 
-appendActionsDiv.setAttribute('class', 'append-to');
+let appendActionsDiv = createElemAddAttribute('div', {class: 'append-to'});
 rootNode.appendChild(appendActionsDiv);
 
-//add img to the bottom
-let img = document.createElement('img');
-img.setAttribute('src', '../homework/assets/img/cat.png');
+let img = createElemAddAttribute('img', {src: '../homework/assets/img/cat.png'});
 rootNode.appendChild(img);
 
-//declared warning message
-let warning = document.createElement('h3');
-warning.setAttribute('class', 'warning');
-warning.innerHTML = 'Maximum item per list are created';
+let warning = createElemAddAttribute('h3', {class: 'warning'}, 'Maximum item per list are created');
 
 addActionButton.addEventListener('click', appendAction);
-
-//append div with action function
-function appendAction () {
-    let text = inputField.value;
-    
-    if (text === '') {
-        return;
-    }    
-
-    let container = document.createElement('div');
-    container.setAttribute('class', 'draggable');
-    container.setAttribute('draggable', 'true');
-
-    let checkbox = document.createElement('input');
-    checkbox.setAttribute('type', 'checkbox');
-    checkbox.setAttribute('id', 'thing');
-
-    container.appendChild(checkbox);
-
-    let label = document.createElement('label');
-    label.setAttribute('for', 'thing');
-
-    let markButton = document.createElement('i');
-    markButton.setAttribute('class', 'material-icons mark');
-    markButton.innerHTML = 'check_box_outline_blank';
-    label.appendChild(markButton);
-
-    container.appendChild(label);
-
-
-    let actionText = document.createElement('span');
-    actionText.innerHTML = text;
-    container.appendChild(actionText);
-
-    let deleteButton = document.createElement('i');
-    deleteButton.setAttribute('class', 'material-icons delete');
-    deleteButton.innerHTML = 'delete';
-    container.appendChild(deleteButton);
-
-    appendActionsDiv.appendChild(container);
-
-    inputField.value = '';
-
-    const MAX_ACTIONS = 10;
-
-    if (appendActionsDiv.childNodes.length === MAX_ACTIONS) {
-        rootNode.insertBefore(warning, inputDiv);
-        inputField.setAttribute('disabled', 'true');
-        return;        
-    } else {
-        inputField.focus();
-    }
-}
 
 appendActionsDiv.addEventListener('click', function (event) {
     if (event.target.classList.contains('mark')) {
@@ -101,10 +51,101 @@ appendActionsDiv.addEventListener('click', function (event) {
 
 appendActionsDiv.addEventListener('click', function (event) {
     if (event.target.classList.contains('delete')) {
-        event.target.parentNode.remove();    
+        event.target.parentNode.remove();  
+        if (rootNode.contains(warning)) {
+            warning.remove();
+            inputField.removeAttribute('disabled');
+        }  
     }
 }, false);
 
+function appendAction () {
+    let text = inputField.value;
+    
+    if (text === '') {
+        return;
+    }    
 
+    let container = createElemAddAttribute('div', {class: 'draggable', draggable: 'true'});
 
-//rootNode.appendChild(/* Append your list item node*/);
+    let checkbox = createElemAddAttribute('input', {type: 'checkbox', id: 'thing'});
+    container.appendChild(checkbox);
+
+    let label = createElemAddAttribute('label', {for: 'thing'});
+
+    let markButton = createElemAddAttribute('i', {class: 'material-icons mark'}, 'check_box_outline_blank')
+    label.appendChild(markButton);
+
+    container.appendChild(label);
+
+    let actionText = createElemAddAttribute('span', {}, text);
+    container.appendChild(actionText);
+
+    let deleteButton = createElemAddAttribute('i', {class: 'material-icons delete'}, 'delete');
+    container.appendChild(deleteButton);
+
+    appendActionsDiv.appendChild(container);
+
+    inputField.value = '';
+
+    addDnDHandlers(container);
+
+    const MAX_ACTIONS = 10;
+    if (appendActionsDiv.childNodes.length === MAX_ACTIONS) {
+        rootNode.insertBefore(warning, inputDiv);
+        inputField.setAttribute('disabled', 'true');
+        return;        
+    } else {
+        inputField.focus();
+    }   
+}
+
+function handleDragStart(e) {
+    draggingElement = this;    
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/html', this.outerHTML);
+}
+
+function handleDragOver(e) {
+  if (e.preventDefault) {
+    e.preventDefault();
+  }
+  this.classList.add('over');
+  e.dataTransfer.dropEffect = 'move';  
+  return false;
+}
+
+function handleDragEnter(e) {
+  if (e.preventDefault) {
+    e.preventDefault(); 
+  }
+}
+
+function handleDragLeave(e) {
+    this.classList.remove('over');
+}
+
+function handleDrop(e) {
+  if (e.stopPropagation) {
+    e.stopPropagation(); 
+  }
+
+  if (draggingElement !== this) {        
+    this.parentNode.removeChild(draggingElement);
+    let dropHTML = e.dataTransfer.getData('text/html');
+    this.insertAdjacentHTML('beforebegin', dropHTML);
+    let dropElem = this.previousSibling;
+    addDnDHandlers(dropElem);
+    
+  }
+  this.classList.remove('over');
+  return false;
+}
+    
+function addDnDHandlers(elem) {
+  elem.addEventListener('dragstart', handleDragStart, false);
+  elem.addEventListener('dragenter', handleDragEnter, false)
+  elem.addEventListener('dragover', handleDragOver, false);
+  elem.addEventListener('dragleave', handleDragLeave, false);
+  elem.addEventListener('drop', handleDrop, false);    
+}
