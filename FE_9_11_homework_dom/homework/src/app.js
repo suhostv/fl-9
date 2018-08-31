@@ -2,44 +2,11 @@ let draggingElement = null; //variable needed for drag’n’drop
 
 //creation of page layout
 let rootNode = document.getElementById('root');
-
-function createElemAddAttribute(tag, attributesObject, markup) {
-    let createdElement = document.createElement(tag);
-    if (Object.keys(attributesObject).length){
-        for (let key in attributesObject) {
-            if (attributesObject.hasOwnProperty(key)) {
-                createdElement.setAttribute(key, attributesObject[key]);
-            }
-        }
-    }
-    if (markup && typeof markup === 'string') {
-        createdElement.innerHTML = markup
-    }
-    return createdElement;
-}
-
-let heading = createElemAddAttribute('h1', {}, 'TODO Cat List');
- rootNode.appendChild(heading);
-
-let inputDiv = createElemAddAttribute('div', {class: 'flex'});
-
-let inputField = createElemAddAttribute('input', {placeholder: 'Add New Action', type: 'text'});
-inputDiv.appendChild(inputField);
-
-let addActionButton = createElemAddAttribute('i', {class: 'material-icons add'}, 'add_box');
-inputDiv.appendChild(addActionButton);
-
-rootNode.appendChild(inputDiv);
-
-rootNode.appendChild(document.createElement('hr'));
-
-let appendActionsDiv = createElemAddAttribute('div', {class: 'append-to'});
-rootNode.appendChild(appendActionsDiv);
-
-let img = createElemAddAttribute('img', {src: '../homework/assets/img/cat.png'});
-rootNode.appendChild(img);
-
-let warning = createElemAddAttribute('h3', {class: 'warning'}, 'Maximum item per list are created');
+let inputDiv = document.querySelector('.flex');
+let inputField = document.querySelector('.action-input');
+let addActionButton = document.querySelector('.add');
+let appendActionsDiv = document.querySelector('.append-to');
+let warning = document.querySelector('.warning');
 
 //event listeners
 addActionButton.addEventListener('click', appendAction);
@@ -53,14 +20,29 @@ appendActionsDiv.addEventListener('click', function (event) {
 appendActionsDiv.addEventListener('click', function (event) {
     if (event.target.classList.contains('delete')) {
         event.target.parentNode.remove();  
-        if (rootNode.contains(warning)) {
-            warning.remove();
+        if (warning.style.display === 'block') {
+            warning.style.display = 'none';
             inputField.removeAttribute('disabled');
         }  
     }
 }, false);
 
 function appendAction () {
+    function createElemAddAttribute(tag, attributesObject, markup) {
+        let createdElement = document.createElement(tag);
+        if (Object.keys(attributesObject).length){
+            for (let key in attributesObject) {
+                if (attributesObject.hasOwnProperty(key)) {
+                    createdElement.setAttribute(key, attributesObject[key]);
+                }
+            }
+        }
+        if (markup && typeof markup === 'string') {
+            createdElement.innerHTML = markup
+        }
+        return createdElement;
+    }
+    
     let text = inputField.value;
     
     if (text === '') {
@@ -93,7 +75,7 @@ function appendAction () {
 
     const MAX_ACTIONS = 10;
     if (appendActionsDiv.childNodes.length === MAX_ACTIONS) {
-        rootNode.insertBefore(warning, inputDiv);
+        warning.style.display = 'block';
         inputField.setAttribute('disabled', 'true');
         return;        
     } else {
@@ -109,18 +91,20 @@ function handleDragStart(e) {
 }
 
 function handleDragOver(e) {
-  if (e.preventDefault) {
-    e.preventDefault();
-  }
-  this.classList.add('over');
-  e.dataTransfer.dropEffect = 'move';  
-  return false;
+    if (e.preventDefault) {
+        e.preventDefault();
+    }
+    if (draggingElement !== null) {
+        this.classList.add('over');
+    }
+    e.dataTransfer.dropEffect = 'move';  
+    return false;
 }
 
 function handleDragEnter(e) {
-  if (e.preventDefault) {
-    e.preventDefault(); 
-  }
+    if (e.preventDefault) {
+        e.preventDefault(); 
+    }
 }
 
 function handleDragLeave(e) {
@@ -128,26 +112,26 @@ function handleDragLeave(e) {
 }
 
 function handleDrop(e) {
-  if (e.stopPropagation) {
-    e.stopPropagation(); 
-  }
+    if (e.stopPropagation) {
+        e.stopPropagation(); 
+    }
 
-  if (draggingElement !== this) {        
-    this.parentNode.removeChild(draggingElement);
-    let dropHTML = e.dataTransfer.getData('text/html');
-    this.insertAdjacentHTML('beforebegin', dropHTML);
-    let dropElem = this.previousSibling;
-    addDnDHandlers(dropElem);
-    
-  }
-  this.classList.remove('over');
-  return false;
+    if (draggingElement !== this && draggingElement !== null) {        
+        this.parentNode.removeChild(draggingElement);
+        let dropHTML = e.dataTransfer.getData('text/html');
+        this.insertAdjacentHTML('beforebegin', dropHTML);
+        let dropElem = this.previousSibling;
+        addDnDHandlers(dropElem);    
+    }
+    this.classList.remove('over');
+    draggingElement = null;
+    return false;
 }
     
 function addDnDHandlers(elem) {
-  elem.addEventListener('dragstart', handleDragStart, false);
-  elem.addEventListener('dragenter', handleDragEnter, false)
-  elem.addEventListener('dragover', handleDragOver, false);
-  elem.addEventListener('dragleave', handleDragLeave, false);
-  elem.addEventListener('drop', handleDrop, false);    
+    elem.addEventListener('dragstart', handleDragStart, false);
+    elem.addEventListener('dragenter', handleDragEnter, false)
+    elem.addEventListener('dragover', handleDragOver, false);
+    elem.addEventListener('dragleave', handleDragLeave, false);
+    elem.addEventListener('drop', handleDrop, false);    
 }
