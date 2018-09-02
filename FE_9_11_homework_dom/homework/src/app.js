@@ -1,12 +1,12 @@
 let draggingElement = null; //variable needed for drag’n’drop
 
 //creation of page layout
-let rootNode = document.getElementById('root');
-let inputDiv = document.querySelector('.flex');
-let inputField = document.querySelector('.action-input');
-let addActionButton = document.querySelector('.add');
-let appendActionsDiv = document.querySelector('.append-to');
-let warning = document.querySelector('.warning');
+const rootNode = document.getElementById('root');
+const inputDiv = document.querySelector('.flex');
+const inputField = document.querySelector('.action-input');
+const addActionButton = document.querySelector('.add');
+const appendActionsDiv = document.querySelector('.append-to');
+const warning = document.querySelector('.warning');
 
 //event listeners
 addActionButton.addEventListener('click', appendAction);
@@ -49,22 +49,22 @@ function appendAction () {
         return;
     }    
 
-    let container = createElemAddAttribute('div', {class: 'draggable', draggable: 'true'});
+    const container = createElemAddAttribute('div', {class: 'draggable', draggable: 'true'});
 
-    let checkbox = createElemAddAttribute('input', {type: 'checkbox', id: 'thing'});
+    const checkbox = createElemAddAttribute('input', {type: 'checkbox', id: 'thing'});
     container.appendChild(checkbox);
 
-    let label = createElemAddAttribute('label', {for: 'thing'});
+    const label = createElemAddAttribute('label', {for: 'thing'});
 
-    let markButton = createElemAddAttribute('i', {class: 'material-icons mark'}, 'check_box_outline_blank')
+    const markButton = createElemAddAttribute('i', {class: 'material-icons mark'}, 'check_box_outline_blank')
     label.appendChild(markButton);
 
     container.appendChild(label);
 
-    let actionText = createElemAddAttribute('span', {}, text);
+    const actionText = createElemAddAttribute('span', {}, text);
     container.appendChild(actionText);
 
-    let deleteButton = createElemAddAttribute('i', {class: 'material-icons delete'}, 'delete');
+    const deleteButton = createElemAddAttribute('i', {class: 'material-icons delete'}, 'delete');
     container.appendChild(deleteButton);
 
     appendActionsDiv.appendChild(container);
