@@ -18,12 +18,17 @@ body {
     flex-direction: column;
 }
 
-h1 {
+header {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+}
+
+h1 {
     padding-bottom: 30px;
     margin: 0;
     font-weight: 500;
+    align-self: center;
 }
 
 .flex {
@@ -58,8 +63,12 @@ hr {
     border: 1px solid black;
 }
 
-.append-to {
+section {
     width: auto;
+}
+
+.append-to {
+    width: 100%;
     min-height: 300px;
     margin-top: 10px;
     padding-left: 16px;
@@ -68,13 +77,14 @@ hr {
     float: left;
 }
 
+footer {
+    display: flex;
+    justify-content: center;
+}
+
 img {
-    display: block;
-    bottom: 0;
-    align-self: center;
-    height: 100px;
+    height: 80px; 
     width: auto;
-    float: left;
 }
 
 .draggable {
@@ -86,12 +96,8 @@ img {
     border-top: 2px dashed #000;
   }
 
-input[type = checkbox] {
-    margin: 0; 
-}
-
 input[type=checkbox] {
-    display:none;
+    display: none;
 }
      
 .mark, .delete {
@@ -113,6 +119,8 @@ span {
     align-self: center;
     font-size: 18px;
     margin-left: 10px;
+    max-width: 630px;
+    word-wrap: break-word;
 }
 
 .warning {

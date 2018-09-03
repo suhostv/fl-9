@@ -1,6 +1,3 @@
-let draggingElement = null; //variable needed for drag’n’drop
-
-//creation of page layout
 const rootNode = document.getElementById('root');
 const inputDiv = document.querySelector('.flex');
 const inputField = document.querySelector('.action-input');
@@ -84,6 +81,8 @@ function appendAction () {
 }
 
 //functions for dragndrop
+let draggingElement = null; 
+
 function handleDragStart(e) {
     draggingElement = this;    
     e.dataTransfer.effectAllowed = 'move';
