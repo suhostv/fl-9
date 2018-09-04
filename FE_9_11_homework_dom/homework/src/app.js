@@ -39,10 +39,10 @@ function appendAction () {
         }
         return createdElement;
     }
-    
-    let text = inputField.value;
-    
-    if (text === '') {
+       
+    if (inputField.value.trim() === '') {
+        inputField.value = '';
+        inputField.focus();
         return;
     }    
 
@@ -58,7 +58,7 @@ function appendAction () {
 
     container.appendChild(label);
 
-    const actionText = createElemAddAttribute('span', {}, text);
+    const actionText = createElemAddAttribute('span', {}, inputField.value);
     container.appendChild(actionText);
 
     const deleteButton = createElemAddAttribute('i', {class: 'material-icons delete'}, 'delete');
