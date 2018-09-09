@@ -62,7 +62,10 @@ function deleteItem() {
 function checkItem() {
     event.target.setAttribute('src', 'assets/img/done-s.png');
     let span = event.target.parentNode.nextSibling;
-    span.style.backgroundColor = '#8zero7f7f';
+    let li = span.parentNode;
+    li.remove();
+    unorderedList.appendChild(li);
+    span.style.backgroundColor = '#807f7f';
 }
 
 function onHashChange() {
@@ -129,7 +132,8 @@ function generateListItem(value) {
     const actionText = createElemAddAttribute('span', {}, value);
     listItem.appendChild(actionText);
 
-    const deleteButton = createElemAddAttribute('img', {src: 'assets/img/remove-s.jpg', class: 'delete-btn-img', alt: 'logo'});
+    const deleteButton = createElemAddAttribute('img', 
+    {src: 'assets/img/remove-s.jpg', class: 'delete-btn-img', alt: 'logo'});
     listItem.appendChild(deleteButton);
 
     unorderedList.appendChild(listItem);
