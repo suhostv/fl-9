@@ -1,0 +1,80 @@
+@import "variables";
+
+body {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (max-width: 1199.98px) {
+    .navbar {
+        padding: 0 1rem;
+    }
+    .nav-item {
+        border-radius: 0;
+        
+            .nav-link {
+                color: @grey;
+                font-weight: 500;
+            
+                &.active {
+                    background-color: @blue;
+                }
+            }
+    }
+
+    .bg-blue {
+        background-color: @blue;
+    }
+
+    .bg-red {
+        background-color: @red;
+    }
+
+    .bg-orange {
+        background-color: @orange;
+    }
+
+    .bg-green {
+        background-color: @green;
+    }
+
+    .bg-grey {
+        background-color: @grey;
+    }
+
+    .text-blue {
+        color: @blue;
+    }
+
+    .border-blue {
+        border: 1px solid @blue !important;
+    }
+
+    .border-red {
+        border: 1px solid @red !important;
+    }
+
+    .border-orange {
+        border: 1px solid @orange !important;
+    }
+
+    .border-green {
+        border: 1px solid @green !important;
+    }
+
+    .font-size {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .font-size {
+        font-size: 0.85em;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .font-size {
+        font-size: 0.76em;
+    }
+}
