@@ -84,6 +84,7 @@ function Product (name, description, price) {
     this.description = description;
     let _price = price;
     let cartAddedTo = '';
+
     let history = [];
 
     this.getPrice = function () {
@@ -103,7 +104,7 @@ function Product (name, description, price) {
     
     this.add = function (cartName) {
         cartAddedTo = cartName;
-        history.push(`${this.name} is added to ${cartName} on ${new Date()}`);
+        history.push(`${this.name} is added to ${cartAddedTo} on ${new Date()}`);
         return this;
     }
 
